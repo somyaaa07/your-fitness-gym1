@@ -155,8 +155,8 @@ export default function JoinNowModal({ open, onClose }) {
 
             <p className="font-inter text-[11px] text-muted text-center">
               Or call us directly at{" "}
-              <a href="tel:+919217688279" className="text-primary hover:underline">
-                +91 92176 88279
+              <a href="tel:+918750002845" className="text-primary hover:underline">
+                +918750002845
               </a>
             </p>
           </form>

@@ -9,7 +9,7 @@ export const programs = [
     longDescription:
       "A structured hypertrophy program combining progressive overload with compound and isolation lifts to pack on quality lean muscle mass.",
     image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop",
+      "https://i.pinimg.com/1200x/f1/5f/74/f15f74a6029b7a076c31da6bc6de4ad4.jpg",
     duration: "60 min",
     difficulty: "Intermediate",
     trainer: "Kabir Malhotra",
@@ -22,7 +22,7 @@ export const programs = [
     longDescription:
       "High-intensity metabolic conditioning paired with nutrition coaching designed to accelerate fat loss while preserving lean muscle.",
     image:
-      "https://i.pinimg.com/736x/f2/0c/fe/f20cfe33cd115730b745ae65ac0cee65.jpg",
+      "https://i.pinimg.com/736x/4b/27/b3/4b27b3410fa710bfad2d0e9225ebd451.jpg",
     duration: "45 min",
     difficulty: "Beginner",
     trainer: "Ishita Rao",
@@ -35,7 +35,7 @@ export const programs = [
     longDescription:
       "Barbell-focused strength cycles built around the big lifts to increase raw power, endurance, and total-body performance.",
     image:
-      "https://i.pinimg.com/1200x/a3/ba/68/a3ba681a7cd8d3fc9214483cba8db32d.jpg",
+      "https://i.pinimg.com/1200x/07/f9/f0/07f9f0d070bef77064f186f35d25d974.jpg",
     duration: "75 min",
     difficulty: "Advanced",
     trainer: "Dev Chauhan",
@@ -48,7 +48,7 @@ export const programs = [
     longDescription:
       "Multi-planar movement patterns that build mobility, balance and real-world strength for everyday life and sport.",
     image:
-      "https://i.pinimg.com/736x/18/8d/cf/188dcfffd23bdbf8d6f1385690928540.jpg",
+      "https://i.pinimg.com/1200x/17/17/b0/1717b0fc049add0ca164bb90980e47b1.jpg",
     duration: "50 min",
     difficulty: "Intermediate",
     trainer: "Kabir Malhotra",
@@ -74,7 +74,7 @@ export const programs = [
     longDescription:
       "Explosive interval circuits engineered to spike your metabolism and torch calories long after the session ends.",
     image:
-      "https://i.pinimg.com/1200x/67/89/a7/6789a781a447833c58268cacdadbb4b0.jpg",
+      "https://i.pinimg.com/736x/7a/bb/9b/7abb9b0fa990e71618fdeb289213e90d.jpg",
     duration: "30 min",
     difficulty: "Intermediate",
     trainer: "Ishita Rao",
@@ -87,7 +87,7 @@ export const programs = [
     longDescription:
       "Fully personalized programming, form correction and accountability with a dedicated coach by your side.",
     image:
-      "https://i.pinimg.com/1200x/ef/51/a4/ef51a4681d575c7232d78ce053b1dc3a.jpg",
+      "https://i.pinimg.com/1200x/24/83/f3/2483f3e659a988c39a2a70238ac841a4.jpg",
     duration: "60 min",
     difficulty: "All Levels",
     trainer: "Kabir Malhotra",
@@ -100,7 +100,7 @@ export const programs = [
     longDescription:
       "Guided mobility flows and breathwork to improve recovery, flexibility and long-term joint health.",
     image:
-      "https://i.pinimg.com/1200x/55/6a/6c/556a6c36d7712614cbad898600b8d83c.jpg",
+      "https://i.pinimg.com/736x/45/a3/c4/45a3c4361ac62f7b6a92df76d49864f3.jpg",
     duration: "45 min",
     difficulty: "Beginner",
     trainer: "Ishita Rao",

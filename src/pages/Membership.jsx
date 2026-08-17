@@ -37,30 +37,30 @@ function FaqItem({ q, a, index }) {
       <div className="rounded-[10px] bg-surface overflow-hidden">
         <button
           onClick={() => setOpen((o) => !o)}
-          className="w-full flex items-center gap-4 sm:gap-5 px-5 sm:px-6 py-5 text-left"
+          className="w-full flex items-center gap-3 sm:gap-5 px-4 sm:px-6 py-4 sm:py-5 text-left"
         >
           <span
-            className={`font-teko text-3xl sm:text-4xl font-semibold leading-none shrink-0 transition-colors duration-300 ${
+            className={`font-teko text-2xl sm:text-3xl md:text-4xl font-semibold leading-none shrink-0 transition-colors duration-300 ${
               open ? "text-primary" : "text-white/10"
             }`}
           >
             {num}
           </span>
           <span
-            className={`flex-1 font-rajdhani font-semibold uppercase tracking-wide text-sm sm:text-base transition-colors duration-300 ${
+            className={`flex-1 font-rajdhani font-semibold uppercase tracking-wide text-xs sm:text-sm md:text-base transition-colors duration-300 ${
               open ? "text-primary" : "text-heading"
             }`}
           >
             {q}
           </span>
           <span
-            className={`shrink-0 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full border transition-all duration-300 ${
+            className={`shrink-0 w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full border transition-all duration-300 ${
               open
                 ? "bg-primary border-primary text-black"
                 : "border-white/20 text-body group-hover:border-primary/60 group-hover:text-primary"
             }`}
           >
-            {open ? <Minus size={16} /> : <Plus size={16} />}
+            {open ? <Minus size={14} /> : <Plus size={14} />}
           </span>
         </button>
         <div
@@ -69,7 +69,7 @@ function FaqItem({ q, a, index }) {
           }`}
         >
           <div className="overflow-hidden">
-            <p className="font-inter text-sm text-body pl-[3rem] sm:pl-[4.75rem] pr-4 sm:pr-14 pb-5 -mt-1">
+            <p className="font-inter text-sm text-body pl-[2.5rem] sm:pl-[3rem] md:pl-[4.75rem] pr-4 sm:pr-8 md:pr-14 pb-5 -mt-1">
               {a}
             </p>
           </div>
@@ -81,14 +81,14 @@ function FaqItem({ q, a, index }) {
 
 function BillingToggle({ annual, setAnnual }) {
   return (
-    <div className="relative inline-flex items-center gap-1 p-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-sm">
+    <div className="relative inline-flex items-center gap-1 p-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-sm w-full max-w-[280px] sm:w-auto sm:max-w-none">
       <span
-        className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-full bg-primary transition-all duration-300 ease-out"
-        style={{ left: annual ? "calc(50% + 0px)" : "6px" }}
+        className="absolute top-1.5 bottom-1.5 w-[calc(45%-4px)] rounded-full bg-primary transition-all duration-300 ease-out"
+        style={{ left: annual ? "calc(55% - 25px)" : "6px" }}
       />
       <button
         onClick={() => setAnnual(false)}
-        className={`relative z-10 font-rajdhani font-bold uppercase text-sm tracking-wide px-6 py-2.5 rounded-full transition-colors duration-300 ${
+        className={`relative z-10 flex-1 sm:flex-none font-rajdhani font-bold uppercase text-xs sm:text-sm tracking-wide px-4 sm:px-6 py-2.5 rounded-full transition-colors duration-300 ${
           !annual ? "text-black" : "text-body hover:text-heading"
         }`}
       >
@@ -96,18 +96,18 @@ function BillingToggle({ annual, setAnnual }) {
       </button>
       <button
         onClick={() => setAnnual(true)}
-        className={`relative z-10 flex items-center gap-2 font-rajdhani font-bold uppercase text-sm tracking-wide px-6 py-2.5 rounded-full transition-colors duration-300 ${
+        className={`relative z-10 flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 font-rajdhani font-bold uppercase text-xs sm:text-sm tracking-wide px-4 sm:px-6 py-2.5 rounded-full transition-colors duration-300 whitespace-nowrap ${
           annual ? "text-black" : "text-body hover:text-heading"
         }`}
       >
         Annual
-        <span
-          className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+        {/* <span
+          className={`text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-full ${
             annual ? "bg-black/15 text-black" : "bg-primary/15 text-primary"
           }`}
         >
           2 mo free
-        </span>
+        </span> */}
       </button>
     </div>
   );
@@ -121,20 +121,20 @@ function PlanCard({ plan, annual }) {
 
   return (
     <div
-      className={`relative flex flex-col rounded-xl p-8 transition-all duration-300 ${
+      className={`relative flex flex-col rounded-xl p-6 sm:p-8 transition-all duration-300 ${
         plan.popular
-          ? "bg-surface border-2 border-primary shadow-glow lg:scale-105 z-10"
+          ? "bg-surface border-2 border-primary shadow-glow z-10"
           : "bg-surface border border-white/10 hover:border-white/25"
       }`}
     >
       {plan.popular && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-primary text-black font-rajdhani font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
+        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-primary text-black font-rajdhani font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md whitespace-nowrap">
           <Crown size={13} /> Most Popular
         </span>
       )}
 
       <div
-        className={`w-12 h-12 flex items-center justify-center rounded-full mb-5 ${
+        className={`w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full mb-5 ${
           plan.popular ? "bg-primary text-black" : "bg-primary/10 text-primary"
         }`}
       >
@@ -142,15 +142,15 @@ function PlanCard({ plan, annual }) {
       </div>
 
       <h3
-        className={`font-teko text-3xl font-semibold uppercase leading-none ${
+        className={`font-teko text-2xl sm:text-3xl font-semibold uppercase leading-none ${
           plan.popular ? "text-primary" : "text-heading"
         }`}
       >
         {plan.name}
       </h3>
 
-      <div className="flex items-end gap-1.5 mt-5 mb-1">
-        <span className="font-teko text-5xl font-bold text-offwhite leading-none tabular-nums">
+      <div className="flex items-end gap-1.5 mt-5 mb-1 flex-wrap">
+        <span className="font-teko text-4xl sm:text-5xl font-bold text-offwhite leading-none tabular-nums">
           {displayPrice}
         </span>
         <span className="font-rajdhani text-muted text-sm mb-1">{displayPeriod}</span>
@@ -165,9 +165,9 @@ function PlanCard({ plan, annual }) {
 
       <ul className="flex flex-col gap-3.5 mb-8 flex-1">
         {plan.features.map((f) => (
-          <li key={f} className="flex items-center gap-3 text-sm text-body font-inter">
+          <li key={f} className="flex items-start sm:items-center gap-3 text-sm text-body font-inter">
             <span
-              className={`shrink-0 w-5 h-5 flex items-center justify-center rounded-full ${
+              className={`shrink-0 w-5 h-5 flex items-center justify-center rounded-full mt-0.5 sm:mt-0 ${
                 plan.popular ? "bg-primary/20 text-primary" : "bg-white/5 text-muted"
               }`}
             >
@@ -203,7 +203,7 @@ export default function Membership() {
         title="Choose "
         highlight="Perfect Plan"
         description="Flexible membership plans designed to fit your fitness goals, schedule, and lifestyle. Get access to quality training, a motivating community, and everything you need to stay consistent and achieve results."
-        image="/membershipBanner.png"
+        image="/membershipbanner1.png"
         primaryBtnText="Contact Us"
         primaryBtnLink="/contact"
         secondaryBtnText="Learn More"
@@ -211,8 +211,8 @@ export default function Membership() {
       />
 
       {/* Pricing */}
-      <section className="py-16 sm:py-24">
-        <div className="container-x">
+      <section className="py-12 sm:py-16 md:py-24">
+        <div className="container-x px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Pricing"
             title="Plans For Every"
@@ -221,28 +221,32 @@ export default function Membership() {
             className="mb-8"
           />
 
-          <div className="flex justify-center mb-16">
+          <div className="flex justify-center mb-10 sm:mb-16 px-4 sm:px-0">
             <BillingToggle annual={annual} setAnnual={setAnnual} />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto md:items-center">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto lg:items-center">
             {memberships.map((plan) => (
               <div
                 key={plan.id}
                 className={`transition-all duration-300 ${
-                  plan.popular ? "md:-translate-y-4 md:scale-105 relative z-10" : "opacity-90"
+                  plan.popular
+                    ? "lg:-translate-y-4 lg:scale-105 relative z-10 sm:col-span-2 lg:col-span-1"
+                    : "opacity-90"
                 }`}
               >
-                <PlanCard plan={plan} annual={annual} />
+                <div className={plan.popular ? "max-w-md mx-auto lg:max-w-none" : ""}>
+                  <PlanCard plan={plan} annual={annual} />
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-14">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-3 mt-10 sm:mt-14 px-4">
             {trustPoints.map((t) => (
               <span
                 key={t}
-                className="flex items-center gap-2 font-rajdhani text-sm text-body"
+                className="flex items-center gap-2 font-rajdhani text-xs sm:text-sm text-body"
               >
                 <span className="w-6 h-6 flex items-center justify-center rounded-full bg-primary/15 text-primary shrink-0">
                   <Check size={13} strokeWidth={3} />
@@ -255,27 +259,27 @@ export default function Membership() {
       </section>
 
       {/* Full comparison table */}
-      <section className="py-16 sm:py-24 bg-surface2">
-        <div className="container-x flex flex-col items-center">
+      <section className="py-12 sm:py-16 md:py-24 bg-surface2">
+        <div className="container-x flex flex-col items-center px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="What's Included"
             title="Compare Every"
             highlight="Plan"
             align="center"
-            className="mb-14"
+            className="mb-10 sm:mb-14"
           />
 
           <div className="w-full max-w-6xl rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-x-auto">
             <table className="w-full min-w-[640px] border-collapse">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="text-left font-rajdhani text-xs uppercase tracking-wide text-muted font-semibold px-6 sm:px-8 py-6 w-[34%]">
+                  <th className="text-left font-rajdhani text-xs uppercase tracking-wide text-muted font-semibold px-4 sm:px-6 md:px-8 py-5 sm:py-6 w-[34%]">
                     Feature
                   </th>
                   {memberships.map((plan) => (
                     <th
                       key={plan.id}
-                      className={`text-center px-4 py-6 ${
+                      className={`text-center px-3 sm:px-4 py-5 sm:py-6 ${
                         plan.popular ? "bg-primary/[0.06]" : ""
                       }`}
                     >
@@ -285,10 +289,10 @@ export default function Membership() {
                             <Crown size={11} /> Popular
                           </span>
                         )}
-                        <span className="font-teko text-2xl font-semibold uppercase text-heading leading-none">
+                        <span className="font-teko text-xl sm:text-2xl font-semibold uppercase text-heading leading-none">
                           {plan.name}
                         </span>
-                        <span className="font-inter text-xs text-muted">{plan.price}{plan.period}</span>
+                        <span className="font-inter text-[11px] sm:text-xs text-muted">{plan.price}{plan.period}</span>
                       </div>
                     </th>
                   ))}
@@ -297,7 +301,7 @@ export default function Membership() {
               <tbody>
                 {comparisonFeatures.map((row, i) => (
                   <tr key={row.feature} className={i % 2 === 0 ? "bg-white/[0.015]" : ""}>
-                    <td className="font-inter text-sm text-body px-6 sm:px-8 py-4">
+                    <td className="font-inter text-sm text-body px-4 sm:px-6 md:px-8 py-4">
                       {row.feature}
                     </td>
                     {memberships.map((plan) => {
@@ -306,7 +310,7 @@ export default function Membership() {
                       return (
                         <td
                           key={plan.id}
-                          className={`text-center px-4 py-4 ${
+                          className={`text-center px-3 sm:px-4 py-4 ${
                             plan.popular ? "bg-primary/[0.04]" : ""
                           }`}
                         >
@@ -335,10 +339,10 @@ export default function Membership() {
       </section>
 
       {/* FAQ — modern flat list, two columns */}
-      <section className="py-16 sm:py-24">
-        <div className="container-x flex flex-col items-center">
-          <SectionHeading eyebrow="FAQ" title="Common" highlight="Questions" className="mb-12" />
-          <div className="w-full max-w-6xl mx-auto grid sm:grid-cols-2 sm:gap-x-14 gap-4">
+      <section className="py-12 sm:py-16 md:py-24">
+        <div className="container-x flex flex-col items-center px-4 sm:px-6 lg:px-8">
+          <SectionHeading eyebrow="FAQ" title="Common" highlight="Questions" className="mb-10 sm:mb-12" />
+          <div className="w-full max-w-6xl mx-auto grid md:grid-cols-2 md:gap-x-14 gap-4">
             <div className="flex flex-col gap-4">
               {membershipFaqs
                 .filter((_, i) => i % 2 === 0)

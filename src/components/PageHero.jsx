@@ -20,11 +20,13 @@ export default function PageHero({
             alt=""
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/85 to-bg/50" />
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/85 to-bg/50" /> */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/85 to-bg/40" />
+
         </>
       )}
 
-      <div className="container-x relative flex flex-col items-start gap-3 sm:gap-4 pt-[150px] xs:pt-[170px] sm:pt-[190px] md:pt-[210px] lg:pt-[220px]">
+      <div className="container-x relative flex flex-col items-start gap-3 sm:gap-4 pt-[170px] xs:pt-[190px] sm:pt-[200px] md:pt-[210px] lg:pt-[220px]">
         {eyebrow && (
           <span className="eyebrow text-xs sm:text-sm">{eyebrow}</span>
         )}
@@ -45,7 +47,7 @@ export default function PageHero({
             {primaryBtnText && (
               <Link
                 to={primaryBtnLink || "#"}
-                className="text-center font-inter font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-md bg-primary text-white hover:opacity-90 transition text-[10px] sm:text-base"
+                className="text-center font-inter font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-md bg-primary text-black hover:opacity-90 transition text-[10px] sm:text-base"
               >
                 {primaryBtnText}
               </Link>

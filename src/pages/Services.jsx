@@ -39,7 +39,7 @@ export default function Services() {
         title="Our "
         highlight="Services"
         description="From one-on-one coaching to corporate wellness, every service at Your Fitness Club is built by certified professionals and backed by real results — not guesswork."
-        image="/banner1.png"
+        image="/servicebanner.png"
         primaryBtnText="Contact Us"
         primaryBtnLink="/contact"
         secondaryBtnText="View Membership"

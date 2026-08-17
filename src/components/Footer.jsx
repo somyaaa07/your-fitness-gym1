@@ -63,17 +63,17 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-sm text-muted font-inter">
             <li className="flex items-start gap-2.5">
               <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
-              6th Floor, Zeal 31 (Plot 31), Techzone 4, Greater Noida West, Uttar Pradesh 201306
+          Gate No 3, Sagar Plaza, behind SUPERTECH ECO VILLAGE-1, near by Arihant Arden Road, Sector 1, Extension, Bisrakh Jalalpur, Noida, Bisrakh Jalalpur, Uttar Pradesh 201301
             </li>
             <li className="flex items-center gap-2.5">
               <Phone size={16} className="text-primary shrink-0" />
-              <a href="tel:+919217688279" className="hover:text-primary transition-colors">
-                +91 92176 88279
+              <a href="tel:+918750002845" className="hover:text-primary transition-colors">
+                +918750002845
               </a>
-              ,&nbsp;
-              <a href="tel:+918826699811" className="hover:text-primary transition-colors">
-                88266 99811
-              </a>
+              {/* ,&nbsp; */}
+              {/* <a href="tel:+919999999999" className="hover:text-primary transition-colors">
+                99999999999
+              </a> */}
             </li>
             <li className="flex items-center gap-2.5">
               <Mail size={16} className="text-primary shrink-0" />

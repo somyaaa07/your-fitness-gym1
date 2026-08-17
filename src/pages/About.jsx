@@ -26,19 +26,19 @@ const facilities = [
     title: "Strength Zone",
     desc: "45+ workout stations across a full range of strength and cardio equipment.",
     image:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
+      "https://i.pinimg.com/1200x/b5/07/dd/b507dd22388cf5c8a589d937e5250580.jpg",
   },
   {
     title: "Recovery Suite",
     desc: "Steam, sauna and ice bath therapy to help you recover faster between sessions.",
     image:
-      "https://images.unsplash.com/photo-1591291621164-2c6367723315?q=80&w=800&auto=format&fit=crop",
+      "https://i.pinimg.com/1200x/b6/1e/4c/b61e4c19d13c419be7cd2f3bc31f667d.jpg",
   },
   {
     title: "Wellness & Lounge",
     desc: "On-site physiotherapy, an in-house cafe and a lounge area to unwind after training.",
     image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop",
+      "https://i.pinimg.com/736x/a0/24/9b/a0249b22274c201a439d011b9168ef43.jpg",
   },
 ];
 
@@ -50,9 +50,9 @@ export default function About() {
       <PageHero
         eyebrow="Our Story"
         title="More Than"
-        highlight="Just Fitness"
+        highlight="Fitness"
         description="At Your Fitness Club, we believe fitness is not a destination — it's a lifestyle. We've built a training environment where commitment meets community, and every session brings you a step closer to your strongest self."
-        image="/About2.png"
+        image="/AboutBanner.png"
         primaryBtnText="Start Your Journey"
         primaryBtnLink="/contact"
         secondaryBtnText="See Our Programs"
@@ -61,20 +61,19 @@ export default function About() {
 
       {/* Brand story — hex-clipped image, text-led */}
       <section className="py-16 sm:py-24 overflow-hidden">
-        <div className="container-x grid lg:grid-cols-[0.95fr_1.05fr] gap-14 items-center">
+        <div className="container-x grid md:grid-cols-[0.95fr_1.05fr] gap-10 md:gap-14 items-center">
           {/* Hex image */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative  max-w-md mx-auto">
-              {/* <div className="absolute inset-0 bg-primary/20" style={{ clipPath: hexClip }} /> */}
-              <div >
+          <div className="relative order-2 md:order-1">
+            <div className="relative max-w-md mx-auto">
+              <div className="aspect-[4/5] w-full overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=1000&auto=format&fit=crop"
+                  src="https://i.pinimg.com/1200x/37/42/dc/3742dc4b31d2b7cd050256b51292c0f8.jpg"
                   alt="Trainer coaching a member at Your Fitness Club"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-5 -right-2 sm:-right-6 bg-surface border border-primary/40 px-5 py-4 max-w-[230px] shadow-glow">
-                <p className="font-teko text-lg text-heading leading-snug">
+              <div className="absolute -bottom-5 -right-2 sm:-right-6 bg-surface border border-primary/40 px-4 sm:px-5 py-3 sm:py-4 max-w-[75%] sm:max-w-[230px] shadow-glow">
+                <p className="font-teko text-base sm:text-lg text-heading leading-snug">
                   "We built the space we always wished existed."
                 </p>
                 <p className="font-rajdhani text-xs uppercase tracking-wide text-primary mt-2">
@@ -85,7 +84,7 @@ export default function About() {
           </div>
 
           {/* Copy */}
-          <div className="flex flex-col gap-6 order-1 lg:order-2">
+          <div className="flex flex-col gap-6 order-1 md:order-2">
             <span className="eyebrow">Our Philosophy</span>
             <h2 className="section-heading">
               Fitness Is A <span className="text-primary">Lifestyle</span>,

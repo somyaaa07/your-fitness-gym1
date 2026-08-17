@@ -41,9 +41,8 @@ export default function About() {
           <div className="flex flex-col gap-6">
             <span className="eyebrow">Our Story</span>
             <p className="font-teko text-4xl sm:text-5xl lg:text-6xl font-semibold uppercase text-heading leading-[1.02]">
-              We didn't build a gym for people who already have it figured
-              out. <span className="text-primary">We built it for people
-              putting in the work.</span>
+             
+              Built for those <span className="text-primary">who put in the work</span>
             </p>
             <p className="font-inter text-body text-sm sm:text-base max-w-xl">
               Your Fitness Club started with one floor, three coaches and a

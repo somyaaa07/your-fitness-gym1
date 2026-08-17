@@ -25,7 +25,7 @@ export default function CTASection() {
 
           <div className="relative min-h-[320px] lg:min-h-[420px]">
             <img
-              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1400&auto=format&fit=crop"
+              src="https://i.pinimg.com/736x/c6/6b/b5/c66bb51a170031065d442ee4a6985a9c.jpg"
               alt="Luxury modern gym interior"
               className="absolute inset-0 w-full h-full object-cover"
             />

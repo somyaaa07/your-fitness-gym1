@@ -11,38 +11,61 @@ function CategoryTabs({ categories, active, setActive, counts }) {
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
 
   useEffect(() => {
-    const idx = categories.indexOf(active);
-    const btn = containerRef.current?.children[idx + 1];
-    if (btn) setIndicator({ left: btn.offsetLeft, width: btn.offsetWidth });
+    const updateIndicator = () => {
+      const idx = categories.indexOf(active);
+      const btn = containerRef.current?.children[idx + 1];
+      const scrollParent = containerRef.current?.parentElement; // the overflow-x-auto wrapper
+      if (btn) {
+        setIndicator({ left: btn.offsetLeft, width: btn.offsetWidth });
+
+        // Horizontally center the active tab WITHOUT touching page (vertical) scroll.
+        // scrollIntoView() was the culprit — it can also scroll the whole window.
+        if (scrollParent) {
+          const targetLeft =
+            btn.offsetLeft - scrollParent.clientWidth / 2 + btn.offsetWidth / 2;
+          scrollParent.scrollTo({
+            left: targetLeft,
+            behavior: "smooth",
+          });
+        }
+      }
+    };
+
+    updateIndicator();
+    window.addEventListener("resize", updateIndicator);
+    return () => window.removeEventListener("resize", updateIndicator);
   }, [active, categories]);
 
+
   return (
-    <div
-      ref={containerRef}
-      className="relative inline-flex flex-wrap items-center justify-center gap-1 p-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-sm mx-auto max-w-full"
-    >
-      <span
-        className="absolute top-1.5 bottom-1.5 rounded-full bg-primary transition-all duration-300 ease-out"
-        style={{ left: indicator.left, width: indicator.width }}
-      />
-      {categories.map((cat) => (
-        <button
-          key={cat}
-          onClick={() => setActive(cat)}
-          className={`relative z-10 flex items-center gap-1.5 font-rajdhani font-bold uppercase tracking-wide text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full transition-colors duration-300 whitespace-nowrap ${
-            active === cat ? "text-black" : "text-body hover:text-heading"
-          }`}
-        >
-          {cat}
-          <span
-            className={`text-[10px] font-semibold ${
-              active === cat ? "text-black/60" : "text-muted"
+    <div className="w-full max-w-full overflow-x-auto sm:overflow-visible sm:flex sm:justify-center [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div
+        ref={containerRef}
+        className="relative inline-flex items-center gap-1 p-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-sm whitespace-nowrap sm:flex-wrap sm:justify-center"
+      >
+        <span
+          className="absolute top-1.5 bottom-1.5 rounded-full bg-primary transition-all duration-300 ease-out"
+          style={{ left: indicator.left, width: indicator.width }}
+        />
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActive(cat)}
+            className={`relative z-10 flex items-center gap-1.5 font-rajdhani font-bold uppercase tracking-wide text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full transition-colors duration-300 whitespace-nowrap shrink-0 ${
+              active === cat ? "text-black" : "text-body hover:text-heading"
             }`}
           >
-            {counts[cat]}
-          </span>
-        </button>
-      ))}
+            {cat}
+            <span
+              className={`text-[10px] font-semibold ${
+                active === cat ? "text-black/60" : "text-muted"
+              }`}
+            >
+              {counts[cat]}
+            </span>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
@@ -93,7 +116,7 @@ export default function Gallery() {
         title="Our"
         highlight="Gallery"
         description="Take a closer look inside Your Fitness Club — from high-energy workouts and modern training spaces to the people, passion, and community that make every session worth showing up for."
-        image="/gallerybanner.png"
+        image="/GalleryBanner1.png"
         primaryBtnText="Start Your Journey"
         primaryBtnLink="/contact"
         secondaryBtnText="Discover Our Story"
@@ -115,7 +138,7 @@ export default function Gallery() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 auto-rows-[140px] xs:auto-rows-[170px] sm:auto-rows-[200px] gap-3 sm:gap-4 lg:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 auto-rows-[130px] xs:auto-rows-[150px] sm:auto-rows-[190px] md:auto-rows-[200px] lg:auto-rows-[210px] xl:auto-rows-[220px] gap-3 sm:gap-4 lg:gap-5 grid-flow-dense">
             {filtered.map((image, i) => (
               <div
                 key={image.id}
@@ -151,18 +174,21 @@ export default function Gallery() {
 
       {/* CTA strip */}
       <section className="pb-16 sm:pb-24">
-        <div className="container-x">
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-surface px-8 sm:px-14 py-10 sm:py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="container-x px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-surface px-6 sm:px-10 lg:px-14 py-8 sm:py-10 lg:py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="absolute -left-10 -top-10 w-48 h-48 rounded-full bg-primary/10 blur-3xl" />
             <div className="relative text-center sm:text-left">
-              <h3 className="font-teko text-3xl sm:text-4xl font-semibold uppercase text-heading leading-none">
+              <h3 className="font-teko text-2xl sm:text-3xl lg:text-4xl font-semibold uppercase text-heading leading-none">
                 See It <span className="text-primary">In Person</span>
               </h3>
               <p className="font-inter text-sm text-body mt-2 max-w-md">
                 Photos only tell half the story — book a free tour and try a session on us.
               </p>
             </div>
-            <Link to="/contact" className="btn-primary group relative shrink-0">
+            <Link
+              to="/contact"
+              className="btn-primary group relative shrink-0 w-full sm:w-auto justify-center"
+            >
               Book A Tour
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </Link>

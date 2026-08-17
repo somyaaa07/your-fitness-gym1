@@ -67,7 +67,7 @@ export default function Programs() {
         title="Train With"
         highlight="Purpose"
         description="Whether your goal is building strength, gaining muscle, improving mobility, or enhancing overall performance, our expert-led programs are designed to meet you where you are and push you toward where you want to be."
-        image="/programsbanner1.png"
+        image="/programsbanner2.png"
         primaryBtnText="Start Your Journey"
         primaryBtnLink="/contact"
         secondaryBtnText="Discover Our Story"

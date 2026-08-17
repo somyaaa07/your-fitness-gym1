@@ -45,14 +45,14 @@ export default function WhyChooseUs() {
           {/* Large featured tile */}
           <div className="lg:col-span-2 lg:row-span-2 relative overflow-hidden border border-white/10 min-h-[320px] group">
             <img
-              src="https://i.pinimg.com/736x/a5/c8/d8/a5c8d8c59ea0ad752e141453393e5d7b.jpg"
+              src="https://i.pinimg.com/1200x/f1/5f/74/f15f74a6029b7a076c31da6bc6de4ad4.jpg"
               alt="Member training at Your Fitness Club"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
             <div className="relative h-full flex flex-col justify-end p-7 sm:p-8 gap-2">
               <span className="font-teko text-5xl sm:text-6xl font-bold text-primary leading-none">
-                18,000+
+                15,000+
               </span>
               <p className="font-rajdhani text-sm uppercase tracking-[0.15em] text-heading/90">
                 Sq. Ft. Of Training Floor

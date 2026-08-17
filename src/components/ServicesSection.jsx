@@ -53,7 +53,7 @@ export default function ServicesSection() {
                 />
               </div>
 
-              <h3 className="font-teko text-2xl sm:text-[26px] font-semibold uppercase text-heading leading-tight">
+              <h3 className="font-teko text-2xl sm:text-[26px] font-semibold uppercase text-heading leading-normal">
                 {s.title}
               </h3>
               <p className="font-inter text-sm text-body leading-relaxed">

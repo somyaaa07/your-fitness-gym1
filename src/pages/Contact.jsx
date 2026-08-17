@@ -7,13 +7,13 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "6th Floor, Zeal 31 (Plot 31), Techzone 4, Greater Noida West, Uttar Pradesh 201306",
+    value: "Gate No 3, Sagar Plaza, behind SUPERTECH ECO VILLAGE-1, near by Arihant Arden Road, Sector 1, Extension, Bisrakh Jalalpur, Noida, Bisrakh Jalalpur, Uttar Pradesh 201301",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 92176 88279, 88266 99811",
-    href: "tel:+919217688279",
+    value: "+91 8750002845",
+    href: "tel:+918750002845",
   },
   {
     icon: Mail,
@@ -130,7 +130,7 @@ export default function Contact() {
   return (
     <>
       <PageHero
-        image="/contactbanner1.png"
+        image="/ContactBanner2.png"
         eyebrow="Get In Touch"
         title="Contact "
         highlight="us"
@@ -195,7 +195,8 @@ export default function Contact() {
                 <div className="min-w-0">
                   <p className="text-sm font-semibold">Your Fitness Club</p>
                   <p className="truncate text-xs text-white/60">
-                    Zeal 31, Techzone 4, Greater Noida West
+                                 SuperTech Eco Village-1 , Greater Noida West, Uttar Pradesh 201306
+
                   </p>
                 </div>
               </div>
@@ -208,7 +209,7 @@ export default function Contact() {
                   Send Us A Message
                 </h2>
                 <a
-                  href="https://wa.me/919217688279"
+                  href="https://wa.me/918750002845"
                   target="_blank"
                   rel="noreferrer"
                   className="hidden sm:flex items-center gap-2 font-rajdhani font-semibold text-xs uppercase tracking-wide text-primary hover:text-heading transition-colors"
@@ -347,7 +348,7 @@ export default function Contact() {
                   className="flex items-center gap-3 font-rajdhani font-semibold text-sm text-body hover:text-primary transition-colors duration-300"
                 >
                   <Phone size={16} className="text-primary shrink-0" />
-                  +91 92176 88279
+                  +91 8750002845
                 </a>
                 <a
                   href="mailto:hello@yourfitnessclub.com"
