@@ -359,7 +359,7 @@ export default function Contact() {
                 </a>
                 <div className="flex items-center gap-3 font-rajdhani font-semibold text-sm text-body">
                   <Clock size={16} className="text-primary shrink-0" />
-                  Mon - Sat: 6:00 AM - 10:00 PM
+                  All Day: 5:00 AM - 11:00 PM
                 </div>
               </div>
             </div>

@@ -88,9 +88,9 @@ export default function Footer() {
           <h4 className="font-rajdhani font-bold text-heading uppercase tracking-wide mb-4">
             Opening Hours
           </h4>
-          <p className="font-inter text-sm text-muted">Mon - Sat</p>
+          {/* <p className="font-inter text-sm text-muted">Mon - Sat</p> */}
           <p className="font-teko text-3xl font-semibold text-primary leading-none mt-1">
-            6:00 AM - 10:00 PM
+            5:00 AM - 11:00 PM
           </p>
         </div>
       </div>
