@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, Plus, Minus, MessageCircle } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  Plus,
+  Minus,
+  MessageCircle,
+} from "lucide-react";
 import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
 
@@ -7,7 +16,8 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Gate No 3, Sagar Plaza, behind SUPERTECH ECO VILLAGE-1, near by Arihant Arden Road, Sector 1, Extension, Bisrakh Jalalpur, Noida, Bisrakh Jalalpur, Uttar Pradesh 201301",
+    value:
+      "Gate No 3, Sagar Plaza, behind SUPERTECH ECO VILLAGE-1, near by Arihant Arden Road, Sector 1, Extension, Bisrakh Jalalpur, Noida, Bisrakh Jalalpur, Uttar Pradesh 201301",
   },
   {
     icon: Phone,
@@ -18,10 +28,14 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@yourfitnessclub.com",
-    href: "mailto:hello@yourfitnessclub.com",
+    value: "yourfitnessclubs8@gmail.com",
+    href: "mailto:yourfitnessclubs8@gmail.com",
   },
-  { icon: Clock, label: "Opening Hours", value: "Mon - Sat : 6:00 AM - 10:00 PM" },
+  {
+    icon: Clock,
+    label: "Opening Hours",
+    value: "Mon - Sat : 6:00 AM - 10:00 PM",
+  },
 ];
 
 const contactFaqs = [
@@ -43,7 +57,7 @@ const contactFaqs = [
   },
   {
     q: "What's the best way to reach the front desk directly?",
-    a: "Call or WhatsApp us at +91 92176 88279 or 88266 99811 and our team will assist you right away.",
+    a: "Call or WhatsApp us at +91 8750002845 and our team will assist you right away.",
   },
 ];
 
@@ -61,6 +75,7 @@ function ContactFaqItem({ q, a, index }) {
     >
       <div className="rounded-[10px] bg-surface overflow-hidden">
         <button
+          type="button"
           onClick={() => setOpen((o) => !o)}
           className="w-full flex items-center gap-4 sm:gap-5 px-5 sm:px-6 py-5 text-left"
         >
@@ -93,7 +108,9 @@ function ContactFaqItem({ q, a, index }) {
 
         <div
           className={`grid transition-all duration-300 ${
-            open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+            open
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
           }`}
         >
           <div className="overflow-hidden">
@@ -115,16 +132,78 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleChange = (e) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const handleChange = (e) => {
+    setForm((f) => ({
+      ...f,
+      [e.target.name]: e.target.value,
+    }));
 
-  const handleSubmit = (e) => {
+    if (errorMessage) {
+      setErrorMessage("");
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-    setTimeout(() => setSubmitted(false), 4000);
+
+    setLoading(true);
+    setSubmitted(false);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch(
+        "https://yourfitnessclubs.com/contact.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: form.name.trim(),
+            email: form.email.trim(),
+            phone: form.phone.trim(),
+            subject: form.subject.trim(),
+            message: form.message.trim(),
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(
+          data.message || "Failed to send your message."
+        );
+      }
+
+      setSubmitted(true);
+
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 4000);
+    } catch (error) {
+      console.error("Contact form error:", error);
+
+      setErrorMessage(
+        error.message ||
+          "Something went wrong. Please try again later."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -141,7 +220,7 @@ export default function Contact() {
         secondaryBtnLink="/about"
       />
 
-      {/* Quick info strip */}
+      {/* Quick Info Strip */}
       <section className="py-14 sm:py-20 bg-surface">
         <div className="container-x">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
@@ -151,16 +230,19 @@ export default function Contact() {
                   <div className="w-11 h-11 shrink-0 flex items-center justify-center rounded-full bg-primary/15 border border-primary/50 text-primary">
                     <info.icon size={20} strokeWidth={1.75} />
                   </div>
+
                   <div>
                     <h3 className="font-rajdhani font-bold text-heading uppercase tracking-wide text-xs">
                       {info.label}
                     </h3>
+
                     <p className="font-inter text-sm text-body mt-1 leading-snug">
                       {info.value}
                     </p>
                   </div>
                 </>
               );
+
               return info.href ? (
                 <a
                   key={info.label}
@@ -170,7 +252,10 @@ export default function Contact() {
                   {Content}
                 </a>
               ) : (
-                <div key={info.label} className="card-dark flex items-start gap-4 p-6">
+                <div
+                  key={info.label}
+                  className="card-dark flex items-start gap-4 p-6"
+                >
                   {Content}
                 </div>
               );
@@ -187,27 +272,37 @@ export default function Contact() {
                 allowFullScreen
                 loading="lazy"
               />
+
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+
               <div className="absolute bottom-3 left-3 right-3 flex items-center gap-3 rounded-lg border border-white/10 bg-black/60 px-4 py-3 text-white backdrop-blur-md">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/15">
                   <MapPin size={20} className="text-primary" />
                 </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold">Your Fitness Club</p>
-                  <p className="truncate text-xs text-white/60">
-                                 SuperTech Eco Village-1 , Greater Noida West, Uttar Pradesh 201306
 
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold">
+                    Your Fitness Club
+                  </p>
+
+                  <p className="truncate text-xs text-white/60">
+                    SuperTech Eco Village-1, Greater Noida West,
+                    Uttar Pradesh 201306
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="card-dark p-8 flex flex-col gap-5">
+            {/* Contact Form */}
+            <form
+              onSubmit={handleSubmit}
+              className="card-dark p-8 flex flex-col gap-5"
+            >
               <div className="flex items-center justify-between gap-4">
                 <h2 className="font-teko text-3xl font-semibold text-heading uppercase">
                   Send Us A Message
                 </h2>
+
                 <a
                   href="https://wa.me/918750002845"
                   target="_blank"
@@ -220,10 +315,15 @@ export default function Contact() {
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
+                {/* Name */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted">
+                  <label
+                    htmlFor="name"
+                    className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted"
+                  >
                     Name
                   </label>
+
                   <input
                     id="name"
                     name="name"
@@ -235,10 +335,16 @@ export default function Contact() {
                     placeholder="Your name"
                   />
                 </div>
+
+                {/* Email */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted">
+                  <label
+                    htmlFor="email"
+                    className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted"
+                  >
                     Email
                   </label>
+
                   <input
                     id="email"
                     name="email"
@@ -253,28 +359,41 @@ export default function Contact() {
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
+                {/* Phone */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted">
+                  <label
+                    htmlFor="phone"
+                    className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted"
+                  >
                     Phone
                   </label>
+
                   <input
                     id="phone"
                     name="phone"
                     type="tel"
+                    required
                     value={form.phone}
                     onChange={handleChange}
                     className="bg-black/40 border border-white/15 rounded-md px-4 py-3 text-sm text-offwhite font-inter focus:outline-none focus:border-primary transition-colors"
                     placeholder="+91 12345 67890"
                   />
                 </div>
+
+                {/* Subject */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="subject" className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted">
+                  <label
+                    htmlFor="subject"
+                    className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted"
+                  >
                     Subject
                   </label>
+
                   <input
                     id="subject"
                     name="subject"
                     type="text"
+                    required
                     value={form.subject}
                     onChange={handleChange}
                     className="bg-black/40 border border-white/15 rounded-md px-4 py-3 text-sm text-offwhite font-inter focus:outline-none focus:border-primary transition-colors"
@@ -283,10 +402,15 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Message */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="message" className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted">
+                <label
+                  htmlFor="message"
+                  className="font-rajdhani text-xs font-semibold uppercase tracking-wide text-muted"
+                >
                   Message
                 </label>
+
                 <textarea
                   id="message"
                   name="message"
@@ -299,14 +423,33 @@ export default function Contact() {
                 />
               </div>
 
-              <button type="submit" className="btn-primary justify-center group">
-                Send Message
-                <Send size={16} className="transition-transform group-hover:translate-x-1" />
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-primary justify-center group disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loading ? "Sending..." : "Send Message"}
+
+                {!loading && (
+                  <Send
+                    size={16}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
+                )}
               </button>
 
+              {/* Success Message */}
               {submitted && (
                 <p className="text-primary font-rajdhani font-semibold text-sm text-center animate-fadeIn">
                   Message sent! We'll get back to you shortly.
+                </p>
+              )}
+
+              {/* Error Message */}
+              {errorMessage && (
+                <p className="text-red-400 font-rajdhani font-semibold text-sm text-center">
+                  {errorMessage}
                 </p>
               )}
             </form>
@@ -326,48 +469,58 @@ export default function Contact() {
           />
 
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-14 items-start">
-            {/* Side CTA panel */}
+            {/* Side CTA */}
             <div className="relative rounded-2xl overflow-hidden border border-white/10 p-8 sm:p-10 flex flex-col gap-6 lg:sticky lg:top-28 bg-gradient-to-br from-surface to-black">
               <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/10 blur-3xl" />
+
               <div className="relative w-14 h-14 flex items-center justify-center rounded-xl border border-primary/40 bg-black/30 text-primary">
                 <Mail size={24} strokeWidth={1.75} />
               </div>
+
               <div className="relative flex flex-col gap-2">
                 <h3 className="font-teko text-3xl font-semibold uppercase text-heading leading-none">
-                  Still Have <span className="text-primary">Questions?</span>
+                  Still Have{" "}
+                  <span className="text-primary">Questions?</span>
                 </h3>
+
                 <p className="font-inter text-sm text-body">
-                  Can't find what you're looking for? Reach out directly and our
-                  team will get back to you right away.
+                  Can't find what you're looking for? Reach out directly
+                  and our team will get back to you right away.
                 </p>
               </div>
 
               <div className="relative flex flex-col gap-3 pt-2 border-t border-white/10">
                 <a
-                  href="tel:+919217688279"
+                  href="tel:+918750002845"
                   className="flex items-center gap-3 font-rajdhani font-semibold text-sm text-body hover:text-primary transition-colors duration-300"
                 >
                   <Phone size={16} className="text-primary shrink-0" />
                   +91 8750002845
                 </a>
+
                 <a
-                  href="mailto:hello@yourfitnessclub.com"
+                  href="mailto:yourfitnessclubs8@gmail.com"
                   className="flex items-center gap-3 font-rajdhani font-semibold text-sm text-body hover:text-primary transition-colors duration-300"
                 >
                   <Mail size={16} className="text-primary shrink-0" />
-                  hello@yourfitnessclub.com
+                  yourfitnessclubs8@gmail.com
                 </a>
+
                 <div className="flex items-center gap-3 font-rajdhani font-semibold text-sm text-body">
                   <Clock size={16} className="text-primary shrink-0" />
-                  All Day: 5:00 AM - 11:00 PM
+                  Mon - Sat: 6:00 AM - 10:00 PM
                 </div>
               </div>
             </div>
 
-            {/* FAQ list */}
+            {/* FAQ List */}
             <div className="flex flex-col gap-4">
               {contactFaqs.map((f, i) => (
-                <ContactFaqItem key={f.q} {...f} index={i} />
+                <ContactFaqItem
+                  key={f.q}
+                  {...f}
+                  index={i}
+                />
               ))}
             </div>
           </div>
@@ -375,4 +528,4 @@ export default function Contact() {
       </section>
     </>
   );
-}
+}   
